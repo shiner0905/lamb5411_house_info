@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tidy -q -i -w 0 --tidy-mark no --drop-empty-elements no -m index.html)",
+      "Bash(curl -s \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRzkaVc1B48sFRIDA8KcafVIjKCX5qJiZpC1_2V-4IQJseZxLED6MRZZewDy1nJTy1Hkx10AZlVd8d2/pubhtml\")",
+      "Bash(curl -s 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRzkaVc1B48sFRIDA8KcafVIjKCX5qJiZpC1_2V-4IQJseZxLED6MRZZewDy1nJTy1Hkx10AZlVd8d2/pub?gid=__TRACKED_VAR__&single=true&output=csv')",
+      "Bash(curl -sL \"https://docs.google.com/spreadsheets/d/e/2PACX-1vRzkaVc1B48sFRIDA8KcafVIjKCX5qJiZpC1_2V-4IQJseZxLED6MRZZewDy1nJTy1Hkx10AZlVd8d2/pub?gid=0&single=true&output=csv\")",
+      "Bash(curl -sL 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRzkaVc1B48sFRIDA8KcafVIjKCX5qJiZpC1_2V-4IQJseZxLED6MRZZewDy1nJTy1Hkx10AZlVd8d2/pub?gid=__TRACKED_VAR__&single=true&output=csv')",
+      "Bash(python3 *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} - %{size_download} bytes\\\\n\" http://localhost:8000/index.html)",
+      "Bash(curl -s -o /dev/null -w \"index.html: HTTP %{http_code}\\\\n\" http://localhost:8000/index.html)",
+      "Bash(curl -s -o /dev/null -w \"detail.html: HTTP %{http_code}\\\\n\" http://localhost:8000/detail.html)",
+      "Bash(curl -s -o /dev/null -w \"styles.css: HTTP %{http_code}\\\\n\" http://localhost:8000/styles.css)",
+      "Bash(curl -s -o /dev/null -w \"data-loader.js: HTTP %{http_code}\\\\n\" http://localhost:8000/data-loader.js)",
+      "Bash(ipconfig getifaddr *)",
+      "Read(//Users/josh/Downloads/**)",
+      "Bash(cp \"/Users/josh/Downloads/Gemini_Generated_Image_rpm4q2rpm4q2rpm4.jpg\" \"/Users/josh/Downloads/房子介紹網頁/hero-bg.jpg\")",
+      "Bash(sed -i '' 's/你對家的想像，依依為您實現。/楊依依/g' index.html detail.html data-loader.js README-SHEETS.md)",
+      "Bash(sed -i '' -e 's/楊依依 - 楊依依/楊依依/g' -e s/楊依依-楊依依/楊依依/g -e s/楊依依｜楊依依/楊依依/g index.html detail.html data-loader.js)",
+      "Bash(pip3 install *)",
+      "Read(//opt/homebrew/bin/**)",
+      "Read(//usr/local/bin/**)",
+      "Bash(python3.12 -c \"from PIL import Image; print\\('PIL OK'\\)\")",
+      "Bash(python3.12 -m pip install Pillow --quiet)",
+      "Bash(python3.12 -m pip install Pillow --break-system-packages --quiet)",
+      "Bash(python3.12)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:8000/detail.html?id=hsyss\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:8000/styles.css\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:8000/data-loader.js\")"
+    ]
+  }
+}
