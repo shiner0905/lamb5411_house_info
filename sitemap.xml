@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://YOUR_DOMAIN/</loc>
+    <loc>https://yi-house.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://YOUR_DOMAIN/detail.html?id=hsyss</loc>
+    <loc>https://yi-house.com/detail.html?id=hsyss</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://YOUR_DOMAIN/detail.html?id=fjjy</loc>
+    <loc>https://yi-house.com/detail.html?id=fjjy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://YOUR_DOMAIN/detail.html?id=yjjy</loc>
+    <loc>https://yi-house.com/detail.html?id=yjjy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://YOUR_DOMAIN/detail.html?id=djjy</loc>
+    <loc>https://yi-house.com/detail.html?id=djjy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://YOUR_DOMAIN/detail.html?id=sjjy</loc>
+    <loc>https://yi-house.com/detail.html?id=sjjy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
