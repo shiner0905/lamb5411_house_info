@@ -397,6 +397,22 @@ function updateMeta(data) {
   }
   // og:url：以當前完整網址為準
   setMeta('og:url', location.href, 'property');
+
+  // 更新 JSON-LD Schema
+  const schemaEl = document.getElementById('schema-listing');
+  if (schemaEl) {
+    const schema = JSON.parse(schemaEl.textContent);
+    if (data['建案案名']) schema.name = data['建案案名'];
+    if (data['副標題'])   schema.description = data['副標題'];
+    schema.url = location.href;
+    const images = [];
+    for (let i = 1; i <= 10; i++) {
+      if (data[`img_${i}`]) images.push(toDirectImageUrl(data[`img_${i}`]));
+    }
+    if (images.length) schema.image = images;
+    if (data['價格']) schema.offers.price = data['價格'];
+    schemaEl.textContent = JSON.stringify(schema, null, 2);
+  }
 }
 
 function setMeta(nameOrProp, value, attr = 'name') {
