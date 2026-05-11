@@ -258,6 +258,36 @@ function initLightbox() {
     else if (e.key === 'ArrowRight') show(idx + 1);
     else if (e.key === 'ArrowLeft')  show(idx - 1);
   });
+
+  // 觸控滑動切換（行動裝置）
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchStartTime = 0;
+  const SWIPE_THRESHOLD = 50;       // 至少滑 50px 才算 swipe
+  const SWIPE_MAX_DURATION = 600;   // 600ms 內完成（避免長按拖曳誤判）
+
+  lightbox.addEventListener('touchstart', (e) => {
+    if (!lightbox.classList.contains('is-open')) return;
+    const t = e.changedTouches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+    touchStartTime = Date.now();
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', (e) => {
+    if (!lightbox.classList.contains('is-open')) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    const dt = Date.now() - touchStartTime;
+    // 必須以水平為主、距離夠長、時間夠短
+    if (Math.abs(dx) > SWIPE_THRESHOLD
+        && Math.abs(dx) > Math.abs(dy)
+        && dt < SWIPE_MAX_DURATION) {
+      if (dx < 0) show(idx + 1);   // 左滑 → 下一張
+      else        show(idx - 1);   // 右滑 → 上一張
+    }
+  }, { passive: true });
 }
 
 // =========================================================
