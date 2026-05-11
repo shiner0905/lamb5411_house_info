@@ -294,11 +294,45 @@ function initLightbox() {
 // 共用：CSV / DOM 替換 / 工具
 // =========================================================
 
+const CACHE_TTL = 10 * 60 * 1000; // 10 分鐘
+
 async function fetchSheetCsv(pubId, gid) {
+  const cacheKey = `gsheet_${pubId}_${gid}`;
   const url = `https://docs.google.com/spreadsheets/d/e/${pubId}/pub?gid=${encodeURIComponent(gid)}&single=true&output=csv`;
+
+  // 讀快取
+  let cached = null;
+  try {
+    const raw = localStorage.getItem(cacheKey);
+    if (raw) cached = JSON.parse(raw);
+  } catch (_) {}
+
+  const now = Date.now();
+  const isFresh = cached && (now - cached.ts < CACHE_TTL);
+
+  if (isFresh) {
+    // 快取新鮮，直接回傳
+    return cached.csv;
+  }
+
+  if (cached) {
+    // 快取過期：先回傳舊資料讓畫面秒出，背景更新
+    fetchAndCache(url, cacheKey).catch(() => {});
+    return cached.csv;
+  }
+
+  // 無快取：正常等待
+  return await fetchAndCache(url, cacheKey);
+}
+
+async function fetchAndCache(url, cacheKey) {
   const res = await fetch(url, { redirect: 'follow' });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return await res.text();
+  const csv = await res.text();
+  try {
+    localStorage.setItem(cacheKey, JSON.stringify({ csv, ts: Date.now() }));
+  } catch (_) {}
+  return csv;
 }
 
 function csvToKeyValue(csv) {
